@@ -4,7 +4,7 @@ import { FallingLines } from "react-loader-spinner";
 
 const PrivetRoute = ({ children }) => {
   const { user, loader } = useAuth();
-  console.log(user, loader);
+  // console.log(user, loader);
   const location = useLocation()
 
   if (loader) {

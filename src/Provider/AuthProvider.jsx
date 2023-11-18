@@ -16,7 +16,7 @@ export const AuthContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic()
   const googleProvider = new GoogleAuthProvider;
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
@@ -50,29 +50,29 @@ const axiosPublic = useAxiosPublic()
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
+      // console.log(currentUser);
       setUser(currentUser);
-    
+
       // console.log(userInfo)
-      if(currentUser){
-          const userInfo = {email: currentUser?.email}
-         axiosPublic.post('/jwt', userInfo)
-         .then(res => {
-          if(res.data.token){
-            localStorage.setItem('access-token', res.data.token)
-          }
-         })
+      if (currentUser) {
+        const userInfo = { email: currentUser?.email }
+        axiosPublic.post('/jwt', userInfo)
+          .then(res => {
+            if (res.data.token) {
+              localStorage.setItem('access-token', res.data.token)
+            }
+          })
       }
-      else{
+      else {
         localStorage.removeItem('access-token')
       }
-      
+
       setLoader(false);
     });
     return () => {
       return unSubscribe();
     };
-  }, [axiosPublic ,user?.email]);
+  }, [axiosPublic, user?.email]);
 
   const authInfo = {
     user,

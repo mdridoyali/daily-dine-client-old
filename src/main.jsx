@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
         <ThemeProvider>
@@ -24,5 +24,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </ThemeProvider>
       </HelmetProvider>
     </QueryClientProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

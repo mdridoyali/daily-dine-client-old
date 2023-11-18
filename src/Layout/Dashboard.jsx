@@ -12,21 +12,27 @@ import {
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart()
 
   // TODO: get isAdmin value from the database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
 
   return (
-    <div className="flex">
+    <div className="flex ">
       {/* dashboard side bar */}
       <div className="w-64 min-h-screen bg-orange-400">
         <ul className="menu">
           {
             isAdmin ? <>
+              <li>
+                <NavLink to={"/"} className={'text-xl font-semibold'}>
+                  <FaHome></FaHome>DailyDine
+                </NavLink>
+              </li>{" "}
               <li>
                 <NavLink to={"/dashboard/adminHome"}>
                   <FaHome></FaHome> Admin Home
@@ -55,11 +61,6 @@ const Dashboard = () => {
               {/* Shared bar */}
               <div className="divider"></div>
               <li>
-                <NavLink to={"/"}>
-                  <FaHome></FaHome>Home
-                </NavLink>
-              </li>{" "}
-              <li>
                 <NavLink to={"/order/salad"}>
                   <FaSearch></FaSearch>Menu
                 </NavLink>
@@ -72,6 +73,11 @@ const Dashboard = () => {
             </> :
 
               <>
+                <li>
+                  <NavLink to={"/"} className={'text-xl font-semibold'}>
+                    <FaHome></FaHome>DailyDine
+                  </NavLink>
+                </li>{" "}
                 <li>
                   <NavLink to={"/dashboard/userHome"}>
                     <FaHome></FaHome> User Home
@@ -99,11 +105,6 @@ const Dashboard = () => {
                 </li>{" "}
                 {/* Shared bar */}
                 <div className="divider"></div>
-                <li>
-                  <NavLink to={"/"}>
-                    <FaHome></FaHome>Home
-                  </NavLink>
-                </li>{" "}
                 <li>
                   <NavLink to={"/order/salad"}>
                     <FaSearch></FaSearch>Menu

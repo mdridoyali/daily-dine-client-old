@@ -9,6 +9,12 @@ import PrivetRoute from "./PrivetRoute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers";
+import AddItems from "../Pages/Dashboard/AddItems";
+import AdminRoutes from "./AdminRoutes";
+import AdminHome from "../Pages/Dashboard/AdminHome";
+import ManageItems from "../Pages/Dashboard/ManageItems";
+import UserRoutes from "./UserRoutes";
+import UpdateItem from "../Pages/Dashboard/UpdateItem";
 
 export const router = createBrowserRouter([
   {
@@ -41,15 +47,33 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
     children: [
+      // normal users routes
       {
         path: 'cart',
-        element: <Cart></Cart>
+        element:  <UserRoutes><Cart></Cart></UserRoutes>
       },
       // admin routes
       {
+        path: 'adminHome',
+        element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+      },
+      {
+        path: 'addItems',
+        element:  <AdminRoutes><AddItems></AddItems></AdminRoutes>
+      },
+      {
         path: 'allUsers',
-        element: <AllUsers></AllUsers>
-      }
+        element: <AdminRoutes> <AllUsers></AllUsers></AdminRoutes>
+      },
+      {
+        path: 'manageItems',
+        element: <AdminRoutes> <ManageItems></ManageItems></AdminRoutes>
+      },
+      {
+        path: 'update/:id',
+        element: <AdminRoutes> <UpdateItem></UpdateItem></AdminRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+      },
     ]
   },
 ]);

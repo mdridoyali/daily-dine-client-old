@@ -6,18 +6,25 @@ import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
+
     const axiosSecure = useAxios()
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users')
+            const res = await axiosSecure.get('/users',)
+            // {
+            //     headers: {
+            //         authorization: `Bearer ${localStorage.getItem('access-token')}`
+            //     }
+            // }
+
             return res.data
         }
     })
 
 
     const handleMakeAdmin = (user) => {
-console.log(user)
+        console.log(user)
         axiosSecure.patch(`/users/admin/${user?._id}`)
             .then(res => {
                 console.log(res.data)
@@ -28,8 +35,6 @@ console.log(user)
             })
 
     }
-
-
 
 
     const handleDelete = (id) => {

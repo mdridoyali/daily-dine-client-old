@@ -55,7 +55,7 @@ const FoodCard = ({ item }) => {
     <div className="mt-7">
       <div className="card card-compact w-96 mb-1 shadow-sm">
         <figure>
-          <img className="w-full" src={image} alt="Shoes" />
+          <img className="w-full" src={image} alt="Food" />
         </figure>
         <p className="absolute right-0 bg-slate-800 text-white px-3 mt-3 mr-4 rounded">
           ${price}
