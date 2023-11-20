@@ -24,7 +24,7 @@ const Dashboard = () => {
   return (
     <div className="flex ">
       {/* dashboard side bar */}
-      <div className="w-64 min-h-screen bg-orange-400">
+      <div className="w-64 min-h-screen bg-black opacity-70  text-white  ">
         <ul className="menu">
           {
             isAdmin ? <>
@@ -59,7 +59,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>{" "}
               {/* Shared bar */}
-              <div className="divider"></div>
+              <div className="divider "></div>
               <li>
                 <NavLink to={"/order/salad"}>
                   <FaSearch></FaSearch>Menu
@@ -89,8 +89,8 @@ const Dashboard = () => {
                   </NavLink>
                 </li>{" "}
                 <li>
-                  <NavLink to={"/dashboard/reservation"}>
-                    <FaCalendar></FaCalendar> Reservation
+                  <NavLink to={"/dashboard/paymentHistory"}>
+                    <FaCalendar></FaCalendar> Payment History
                   </NavLink>
                 </li>{" "}
                 <li>
